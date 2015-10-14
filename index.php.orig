@@ -1,0 +1,53 @@
+<?php
+/**
+ * @file        index.php
+ * @description
+ *
+ * PHP Version  5.4.4
+ *
+ * @package     newrobocall
+ * @category
+ * @plugin URI
+ * @copyright   2015, Vadim Pshentsov. All Rights Reserved.
+ * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU/GPLv3
+ * @author      Vadim Pshentsov <pshentsoff@gmail.com> 
+ * @link        http://pshentsoff.ru Author's homepage
+ * @link        http://blog.pshentsoff.ru Author's blog
+ *
+ * @created     03.08.15
+ */
+
+require 'Slim/Slim.php';
+\Slim\Slim::registerAutoloader();
+?>
+<ul class="menu">
+<?php
+foreach (array("Home"=>"/", "Hello"=>"/hello/Dude", "Name"=>"/Dude") as $text => $uri){
+	echo "<li><a href=\"$uri\">$text</a></li>";
+};
+?>
+</ul>
+<?php	
+
+$app = new \Slim\Slim(array('debug'=>true, 'mode' => 'development'));
+$app->get('/', function (){
+	echo "Hello, Welcome to the Newrobocall project homepage!";
+});
+
+<<<<<<< HEAD
+$app->get('/hello/:name', function ($name){
+=======
+$hello = $app->get('/', function () {
+  echo "Hello, unknown visitor! Welcome to the Newrobocall project homepage!";
+});
+
+$hello = $app->get('/hello/:name', function ($name) {
+>>>>>>> 1052777e281e51cc751ea377cb6bfea20535c28c
+  echo "Hello, $name! Welcome to the Newrobocall project homepage!";
+});
+
+$app->get('/:name', function ($name){
+  echo "You are just $name!";
+});
+
+$app->run();
