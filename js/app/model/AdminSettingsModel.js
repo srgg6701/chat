@@ -18,7 +18,7 @@
         },
         
         initialize : function()
-        {
+        {   trc('AdminSettingsModel.initialize');
             // Read settings from cookies if any
             
             this.fetch();
@@ -29,12 +29,12 @@
         },
         
         save : function()
-        {
+        {   trc('AdminSettingsModel.save');
             $.cookie('customer-chat-admin-settings', JSON.stringify(this.attributes));
         },
         
         fetch : function()
-        {
+        {   trc('AdminSettingsModel.fetch');
             if($.cookie('customer-chat-admin-settings'))
             {
                 this.set(JSON.parse($.cookie('customer-chat-admin-settings')));
