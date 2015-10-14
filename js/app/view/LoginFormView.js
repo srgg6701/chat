@@ -14,7 +14,7 @@
         mailValid : false,
         
         initialize : function()
-        {
+        {   trc('LoginFormView.initialize');
             // Cache view elements
             
             this.$name = this.$('#customer-chat-login-name');
@@ -25,7 +25,7 @@
         },
         
         reset : function()
-        {
+        {   trc('LoginFormView.reset');
             this.$name.val('');
             this.$mail.val('');
             
@@ -34,7 +34,7 @@
         },
         
         validateName : function()
-        {
+        {   trc('LoginFormView.validateName');
             if(this.$name.val().length == 0)
             {
                 this.$name.addClass('customer-chat-input-error');
@@ -50,7 +50,7 @@
         },
         
         validateMail : function()
-        {
+        {   trc('LoginFormView.validateMail');
             if(this.$mail.val().length == 0 || !this.mailExp.test(this.$mail.val()))
             {
                 this.$mail.addClass('customer-chat-input-error');
@@ -66,7 +66,7 @@
         },
         
         isValid : function()
-        {
+        {   trc('LoginFormView.isValid');
             this.validateName();
             this.validateMail();
             

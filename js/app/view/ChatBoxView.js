@@ -9,7 +9,7 @@
     var ChatBoxView = app.ChatBoxView = Backbone.View.extend({
         
         initialize : function()
-        {
+        {   trc('ChatBoxView.initialize');
             // Initialize models
             
             this.settings = app.model.settings;
@@ -26,7 +26,7 @@
         },
         
         addMessage : function(message, scrollDown, ignoreScrollSettings)
-        {
+        {   trc('ChatBoxView.addMessage', [true, message, scrollDown, ignoreScrollSettings]);
             // Create the message element from template
             
             var messageView = new app.MessageView({ model : message, fullDate : this.options.fullDate });
@@ -63,7 +63,7 @@
         },
         
         clear : function()
-        {
+        {   trc('ChatBoxView.clear');
             // Destroy messages
             
             for(var i = 0; i < this.messageViews.length; i++)

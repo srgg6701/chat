@@ -9,7 +9,7 @@
     app.UserInfoPopoverView = Backbone.View.extend({
     
         initialize : function(options)
-        {
+        {   trc('UserInfoPopoverView.initialize', [true, options]);
             var $button = $(options.button);
             
             $button.popover({
@@ -44,7 +44,7 @@
         },
         
         render : function()
-        {
+        {   trc('UserInfoPopoverView.render');
             // Clear the view
             
             this.$el.html(app.template.userInfoPopoverContent);

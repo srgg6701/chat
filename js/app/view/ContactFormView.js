@@ -15,7 +15,7 @@
         messageValid : false,
         
         initialize : function()
-        {
+        {   trc('ContactFormView.initialize');
             // Cache view elements
             
             this.$name    = this.$('#customer-chat-contact-name');
@@ -28,7 +28,7 @@
         },
         
         reset : function()
-        {
+        {   trc('ContactFormView.reset');
             this.$name.val('');
             this.$mail.val('');
             this.$message.val('');
@@ -39,7 +39,7 @@
         },
         
         validateName : function()
-        {
+        {   trc('ContactFormView.validateName');
             if(this.$name.val().length == 0)
             {
                 this.$name.addClass('customer-chat-input-error');
@@ -55,7 +55,7 @@
         },
         
         validateMail : function()
-        {
+        {   trc('ContactFormView.validateMail');
             if(this.$mail.val().length == 0 || !this.mailExp.test(this.$mail.val()))
             {
                 this.$mail.addClass('customer-chat-input-error');
@@ -71,7 +71,7 @@
         },
         
         validateMessage : function()
-        {
+        {   trc('ContactFormView.validateMessage');
             if(this.$message.val().length < 6)
             {
                 this.$message.addClass('customer-chat-input-error');
@@ -87,7 +87,7 @@
         },
         
         isValid : function()
-        {
+        {   trc('ContactFormView.isValid');
             this.validateName();
             this.validateMail();
             this.validateMessage();
