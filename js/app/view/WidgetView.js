@@ -52,6 +52,7 @@
         
         initialize : function()
         {
+            trc('WidgetView.initialize');
             // Initialize models
             
             this.settings = app.model.settings;

@@ -10,6 +10,7 @@
     
         initialize : function(attributes)
         {
+            trc('UserModel.initialize');
             if(typeof attributes.info === 'string')
             {
                 try      { attributes.info = JSON.parse(attributes.info); }

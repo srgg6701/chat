@@ -50,7 +50,7 @@ function trace_all(function_name, params, color){
 			if(function_name.indexOf('UserInfoPopoverView.')!=-1)
 				color='#BA55D3';
 			if(function_name.indexOf('WidgetView.')!=-1)
-				color='rebeccablue';
+				color='#0000CD';
 			if(function_name.indexOf('CannedMessagesView.')!=-1)
 				color='#800080';
 			if(function_name.indexOf('ChatTabView.')!=-1)
