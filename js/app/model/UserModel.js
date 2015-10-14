@@ -19,7 +19,7 @@
         },
         
         getAge : function()
-        {
+        {   trc('UserModel.getAge');
             // Initialize models
             
             this.chat = app.model.chat;
@@ -33,14 +33,14 @@
         },
         
         getReadableName : function()
-        {
+        {   trc('UserModel.getReadableName');
             var name = this.get('name');
             
             return name.lastIndexOf('-') !== -1 ? name.slice(0, name.lastIndexOf('-')) : name;
         },
         
         hasRole : function(role)
-        {
+        {   trc('UserModel.hasRole', [true, role]);
             return this.get('roles').indexOf(role) !== -1;
         }
     });

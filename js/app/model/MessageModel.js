@@ -17,7 +17,7 @@
         },
         
         initialize : function(attributes, options)
-        {
+        {   trc('MessageModel.initialize', [true, attributes, options]);
             this.options = options || {};
             
             // Initialize fields if stored as server-side data
@@ -63,7 +63,7 @@
         },
         
         getAge : function()
-        {
+        {   trc('MessageModel.getAge');
             // Calculate how long ago the message was received (in seconds)
             
             var currentTime = Math.floor(new Date().getTime()       / 1000);
@@ -73,21 +73,21 @@
         },
         
         getReadableName : function()
-        {
+        {   trc('MessageModel.getReadableName');
             var name = this.get('author');
             
             return name.lastIndexOf('-') !== -1 ? name.slice(0, name.lastIndexOf('-')) : name;
         },
         
         getToUserReadableName : function()
-        {
+        {   trc('MessageModel.getToUserReadableName');
             var name = this.get('toAuthor');
             
             return name.lastIndexOf('-') !== -1 ? name.slice(0, name.lastIndexOf('-')) : name;
         },
         
         getTalkName : function()
-        {
+        {   trc('MessageModel.getTalkName');
             var toName = this.get('toAuthor');
             
             return this.getReadableName() + (toName ? '/' + (toName.lastIndexOf('-') !== -1 ? toName.slice(0, toName.lastIndexOf('-')) : toName) : '');
