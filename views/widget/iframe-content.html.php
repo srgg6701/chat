@@ -234,6 +234,6 @@
         <script src="<?php echo $app->asset('js/app/view/SelectAvatarInlineView.js') ?>"></script>
         
         <script src="<?php echo $app->asset('js/widget.js') ?>"></script>
-        
+        <script src="<?php echo $app->asset('js/js-observer.js') ?>"></script>
     </body>
 </html>

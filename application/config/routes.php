@@ -74,7 +74,7 @@ return array(
     
     // Widget
     
-    //'widget-iframe-content'     => 'Widget:iframeContent',
+    'widget-iframe-content'     => 'Widget:iframeContent',
     'widget-iframe-content-min' => 'Widget:iframeContentMin',
     'widget-mobile'             => 'Widget:mobileView',
     'widget-init.js'            => 'Widget:init',
@@ -84,7 +84,7 @@ return array(
     // Admin
     
     'admin'           => 'Admin:index',
-    //'admin-dev'       => 'Admin:indexDev',
+    'admin-dev'       => 'Admin:indexDev',
     'admin-templates' => 'Admin:templates'
 );
 
