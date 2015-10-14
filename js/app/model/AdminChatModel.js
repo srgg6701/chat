@@ -54,6 +54,7 @@
         
         checkUsers : function()
         {
+            trc('AdminChatModel', [true]);
             // Check if there's any user on-line
             
             var _this = this;
