@@ -14,14 +14,14 @@
         },
         
         initialize : function()
-        {
+        {   trc('CannedMessagesModel.initialize');
             // Read settings
             
             this.fetch();
         },
         
         fetch : function()
-        {
+        {   trc('CannedMessagesModel.fetch');
             var _this = this;
             
             $.get(config.listCannedMessagesPath, function(data)
@@ -36,7 +36,7 @@
         },
         
         saveMessage : function(message)
-        {
+        {   trc('CannedMessagesModel.saveMessage', [true, message]);
             // Notify about the started request
             
             this.trigger('request');
@@ -77,7 +77,7 @@
         },
         
         getById : function(id)
-        {
+        {   trc('CannedMessagesModel.getById', [true, id]);
             var items = this.get('messages');
             
             for(var i = 0; i < items.length; i++)
@@ -89,7 +89,7 @@
         },
         
         deleteMessage : function(id)
-        {
+        {   trc('CannedMessagesModel.deleteMessage', [true, id]);
             // Remove operator from the local cache
             
             var items = this.get('messages');

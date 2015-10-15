@@ -21,7 +21,7 @@
         lastTypingUpdate : 0,
         
         initialize : function()
-        {
+        {   trc('GuestChatModel.initialize');
             // Handle chatting features
             
             this.once('operators:online', this.manageConnection, this);
@@ -31,7 +31,7 @@
         },
         
         autoLogin : function()
-        {
+        {   trc('GuestChatModel.autoLogin');
             // Check if user is already logged in
             
             var _this = this;
@@ -68,7 +68,7 @@
         },
         
         login : function(input)
-        {
+        {   trc('GuestChatModel.login', [true, input]);
             var _this = this;
             
             input.info = JSON.stringify(config.info);
@@ -95,7 +95,7 @@
         },
         
         logout : function()
-        {
+        {   trc('GuestChatModel.logout');
             // Stop connection management
             
             if(this.connectionTimer) clearInterval(this.connectionTimer);
@@ -139,7 +139,7 @@
         },
         
         checkOperators : function()
-        {
+        {   trc('GuestChatModel.checkOperators');
             // Check if there's any operator on-line
             
             var _this = this;
@@ -162,14 +162,14 @@
         },
         
         keepAlive : function()
-        {
+        {   trc('GuestChatModel.keepAlive');
             // Send keep-alive request
             
             $.get(config.keepAlivePath);
         },
         
         updateTypingStatus : function()
-        {
+        {   trc('GuestChatModel.updateTypingStatus');
             // Get operator's ID
             
             var operatorId = this.lastOperator && this.lastOperator.id;
@@ -192,7 +192,7 @@
         },
         
         getTypingStatus : function()
-        {
+        {   trc('GuestChatModel.getTypingStatus');
             // Get operator's ID
             
             var operatorId = this.lastOperator && this.lastOperator.id;
@@ -214,7 +214,7 @@
         },
         
         getMessages : function()
-        {
+        {   trc('GuestChatModel.getMessages');
             // Poll new messages data
             
             var _this = this;
@@ -240,7 +240,7 @@
         },
         
         confirmMessagesRead : function(data)
-        {
+        {   trc('GuestChatModel.confirmMessagesRead', [true, data]);
             // Get first and last message IDs
             
             var data = {
@@ -255,7 +255,7 @@
         },
         
         storeMessages : function(messages)
-        {
+        {   trc('GuestChatModel.storeMessages', [true, messages]);
             // Prepare the messages
             
             _.each(messages, function(message)
@@ -281,7 +281,7 @@
         },
         
         storeOperator : function(operator)
-        {
+        {   trc('GuestChatModel.storeOperator', [true, operator]);
             this.lastOperator = this.operatorsCache[operator.id] = operator;
             
             // Save the cookie
@@ -295,7 +295,7 @@
         },
         
         loadOperatorsData : function(messages, callback)
-        {
+        {   trc('GuestChatModel.loadOperatorsData', [true, messages, callback]);
             var _this = this;
             
             var loadCount = 0;
@@ -348,12 +348,12 @@
         },
         
         getOperatorName : function(id)
-        {
+        {   trc('GuestChatModel.getOperatorName', [true, id]);
             return this.operatorsCache[id] && this.operatorsCache[id].name;
         },
         
         sendMessage : function(message, callback)
-        {
+        {   trc('GuestChatModel.sendMessage', [true, message, callback]);
             // Prepare data
             
             var input = {
@@ -389,7 +389,7 @@
         },
         
         manageConnection : function()
-        {
+        {   trc('GuestChatModel.manageConnection');
             var _this = this;
             
             this.connectionTimer = setInterval(function()

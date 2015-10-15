@@ -2674,8 +2674,8 @@ function trc(function_name, params, color) {
 
 					case 'fs.off':
 						console.log('case: ' + type);
-						console.log('%cpostMessage => state.mobile' + [iframe.style.width, iframe.style.height, iframe.style.right].join(','), 'color:navy;');
-						postMessage('get.properties:' + [iframe.style.width, iframe.style.height, iframe.style.right].join(','));
+						console.log('%cpostMessage => state.mobile, commented' + [iframe.style.width, iframe.style.height, iframe.style.right].join(','), 'color:navy;');
+						//postMessage('get.properties:' + [iframe.style.width, iframe.style.height, iframe.style.right].join(','));
 						break;
 
 					case 'animate':
@@ -2753,13 +2753,15 @@ function trc(function_name, params, color) {
 		}
 
 		function setMobileState() {
-			trc('contentLoaded.setMobileState', [true]);
-
+			trc('contentLoaded.setMobileState', [true, 'return false']);
+			return false;
 			state = 'mobile';
 
 			for (var key in mobileStyles) originalStyles[key] = iframe.style[key];
 			for (var key in mobileStyles) iframe.style[key] = mobileStyles[key];
+
 			console.log('%cpostMessage => state.mobile', 'color:navy;');
+
 			postMessage('state.mobile');
 
 			positionWidget();

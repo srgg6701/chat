@@ -9,14 +9,14 @@
     app.UISettingsModel = Backbone.Model.extend({
     
         initialize : function()
-        {
+        {   trc('UISettingsModel.initialize');
             // Read settings
             
             this.fetch();
         },
         
         fetch : function()
-        {
+        {   trc('UISettingsModel.fetch');
             var _this = this;
             
             $.get(config.getSettingsPath, function(data)
@@ -31,7 +31,7 @@
         },
         
         save : function()
-        {
+        {   trc('UISettingsModel.save');
             if(arguments.length > 0)
             {
                 this.set.apply(this, arguments);
@@ -52,7 +52,7 @@
         },
         
         reset : function()
-        {
+        {   trc('UISettingsModel.reset');
             var _this = this;
             
             $.post(config.resetSettingsPath, function(data)

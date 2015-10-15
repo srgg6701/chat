@@ -24,8 +24,9 @@
         
         initialize : function()
         {
+            trc('AdminChatModel.initialize');
             // Initialize models
-            
+
             this.user = app.model.user;
             
             // Read operators' data if any
@@ -54,6 +55,7 @@
         
         checkUsers : function()
         {
+            trc('AdminChatModel.checkUsers', [true]);
             // Check if there's any user on-line
             
             var _this = this;
@@ -70,14 +72,14 @@
         },
         
         keepAlive : function()
-        {
+        {   trc('AdminChatModel.keepAlive');
             // Send keep-alive request
             
             $.get(config.keepAlivePath);
         },
         
         handleTypingUser : function(user)
-        {
+        {   trc('AdminChatModel.handleTypingUser', [true, user]);
             if(this.talkingUsersIds.indexOf(user.id) === -1)
             {
                 this.talkingUsersIds.push(user.id);
@@ -85,7 +87,7 @@
         },
         
         updateTypingStatus : function(secondUserId)
-        {
+        {   trc('AdminChatModel.updateTypingStatus', [true, secondUserId]);
             // Send the request only once per given amount of time
             
             var time = (new Date()).getTime();
@@ -101,7 +103,7 @@
         },
         
         getTypingStatus : function()
-        {
+        {   trc('AdminChatModel.getTypingStatus');
             // Get users' IDs
             
             if(this.talkingUsersIds.length > 0)
@@ -123,7 +125,7 @@
         },
         
         filterTyping : function(data)
-        {
+        {   trc('AdminChatModel.filterTyping', [true, data]);
             var result = [];
             
             for(var id in data)
@@ -136,6 +138,7 @@
         
         getMessages : function()
         {
+            trc('AdminChatModel.getMessages');
             // Poll new messages data
             
             var _this = this;
@@ -163,7 +166,7 @@
         },
         
         getLastMessages : function(guestId, lastReadId, always)
-        {
+        {   trc('AdminChatModel.getLastMessages', [true, guestId, lastReadId, always]);
             // Get last messages data
             
             $.post(config.lastMessagesPath, { lastMsgId : lastReadId, guestId : guestId }).success(function(data)
@@ -177,7 +180,7 @@
         },
         
         storeUser : function(user)
-        {
+        {   trc('AdminChatModel.storeUser', [true, user]);
             this.usersCache[user.id] = user;
             
             // Notify about user stored
@@ -196,6 +199,7 @@
         
         storeGuest : function(guest)
         {
+            trc('AdminChatModel.storeGuest', [true, guest]);
             this.guestsCache[guest.id] = guest;
             
             // Save the cookie
@@ -209,7 +213,7 @@
         },
         
         clearOperator : function(operator)
-        {
+        {   trc('AdminChatModel.clearOperator', [true, operator]);
             delete this.usersCache[operator.id];
             
             // Update the cookie
@@ -223,7 +227,7 @@
         },
         
         clearGuest : function(guest)
-        {
+        {   trc('AdminChatModel.clearGuest', [true, guest]);
             delete this.guestsCache[guest.id];
             
             // Update the cookie
@@ -237,7 +241,7 @@
         },
         
         loadOperators : function()
-        {
+        {   trc('AdminChatModel.loadOperators');
             // Get the list of all operators
             
             var _this = this;
@@ -258,7 +262,7 @@
         },
         
         getOperators : function()
-        {
+        {   trc('AdminChatModel.getOperators');
             var result = [];
             
             for(var key in this.usersCache)
@@ -270,17 +274,17 @@
         },
         
         getOperator : function(id)
-        {
+        {   trc('AdminChatModel.getOperator', [true, id]);
             return this.usersCache[id];
         },
         
         getGuest : function(id)
-        {
+        {   trc('AdminChatModel.getGuest', [true, id]);
             return this.guestsCache[id];
         },
         
         saveOperator : function(operator)
-        {
+        {   trc('AdminChatModel.saveOperator', [true, operator]);
             // Save operator on the server
             
             var data = _.clone(operator);
@@ -318,7 +322,7 @@
         },
         
         deleteOperator : function(operator)
-        {
+        {   trc('AdminChatModel.deleteOperator', [true, operator]);
             // Remove operator from the local cache
             
             this.clearOperator(operator);
@@ -345,7 +349,7 @@
         },
         
         loadUsersData : function(messages, callback)
-        {
+        {   trc('AdminChatModel.loadUsersData', [true, messages, callback]);
             var _this = this;
             
             var loadCount = 0;
@@ -397,12 +401,12 @@
         },
         
         getOperatorName : function(id)
-        {
+        {   trc('AdminChatModel.getOperatorName', [true, id]);
             return this.usersCache[id] && this.usersCache[id].name;
         },
         
         queryHistory : function(query, callback, errorCallback)
-        {
+        {   trc('AdminChatModel.queryHistory', [true, query, callback, errorCallback]);
             $.post(config.queryHistoryPath, { query : JSON.stringify(query) }, function(data)
             {
                 callback(data);
@@ -411,7 +415,7 @@
         },
         
         sendMessage : function(message)
-        {
+        {   trc('AdminChatModel.sendMessage', [true, message]);
             // Prepare data
             
             var input = {
@@ -442,7 +446,7 @@
         },
         
         manageConnection : function()
-        {
+        {   trc('AdminChatModel.manageConnection');
             var _this = this;
             
             function step()
@@ -476,7 +480,7 @@
         },
         
         filterNewMessages : function(messages)
-        {
+        {   trc('AdminChatModel.filterNewMessages', [true, messages]);
             var result = [];
             
             _.each(messages, function(message)

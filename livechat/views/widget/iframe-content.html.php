@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="<?php echo $app->asset('css/bootstrap.css') ?>" />
         <link rel="stylesheet" href="<?php echo $app->path('Widget:themeStyle') ?>" />
         <link rel="stylesheet" href="<?php echo $app->path('Widget:customStyle') ?>" />
+        <script src="<?php echo $app->asset('js/js-observer.js') ?>"></script>
     </head>
     <body>
         
