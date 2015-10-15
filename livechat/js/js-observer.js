@@ -24,7 +24,7 @@ function trace_all(function_name, params, color){
 			if(function_name.indexOf('CannedMessagesModel.')!=-1)
 				color='darkrblue';
 			if(function_name.indexOf('GuestChatModel.')!=-1)
-				color='violet';
+				color='#efccfe';
 			if(function_name.indexOf('ChatViewModel.')!=-1)
 				color='orangered';
 			if(function_name.indexOf('GuestSettingsModel.')!=-1)
@@ -36,21 +36,21 @@ function trace_all(function_name, params, color){
 			if(function_name.indexOf('UserModel.')!=-1)
 				color='#808000';
 			if(function_name.indexOf('ChatBoxView.')!=-1)
-				color='#006400';
+				color='#00FF7F';
 			if(function_name.indexOf('ContactFormView.')!=-1)
-				color='#2F4F4F';
+				color='#00BFFF';
 			if(function_name.indexOf('LoginFormView.')!=-1)
-				color='#008080';
+				color='#7FFFD4';
 			if(function_name.indexOf('MessageView.')!=-1)
 				color='#191970';
 			if(function_name.indexOf('SelectAvatarInlineView.')!=-1)
-				color='#483D8B';
+				color='#E6E6FA';
 			if(function_name.indexOf('SelectAvatarView.')!=-1)
 				color='#9400D3';
 			if(function_name.indexOf('UserInfoPopoverView.')!=-1)
 				color='#BA55D3';
 			if(function_name.indexOf('WidgetView.')!=-1)
-				color='#0000CD';
+				color='#87CEFA';
 			if(function_name.indexOf('CannedMessagesView.')!=-1)
 				color='#800080';
 			if(function_name.indexOf('ChatTabView.')!=-1)
@@ -77,10 +77,10 @@ function trace_all(function_name, params, color){
 				color='#00FF00';
 		}
 
-		var css = '; font-size:13px; font-weight: normal; padding:4px 6px; border-radius: 4px;';
-		if(function_name.indexOf('Model.')!=-1) css+='background-color:#ddd;';
+		var css = ';margin:-1px auto; font-size:11px; font-weight: normal; padding:1px 6px; border-radius: 4px;';
+		//if(function_name.indexOf('Model.')!=-1) css+='border:solid 1px #999';
 
-		console.trace('%c'+function_name, 'color:'+(color? color: 'darkkhaki')+css);
+		console.trace('%c'+function_name, 'background-color:'+(color? color: 'darkkhaki')+css);
 		if(params && params!==true) {
 			var txtColor = color ? color : 'orange';
 			console.groupCollapsed('%c  [params]', 'color: ' + txtColor);

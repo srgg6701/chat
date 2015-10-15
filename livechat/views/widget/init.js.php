@@ -2655,7 +2655,7 @@ function trc(function_name, params, color) {
 
 			addListener(window, 'message', function (evt) {
 				trc('contentLoaded.addListener.addListener', [true, window, 'message']);
-
+				if(typeof evt.data != 'string') return;
 				var parts = evt.data.split('|');
 				var type = parts[0];
 

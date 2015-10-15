@@ -54,7 +54,6 @@
         {
             trc('WidgetView.initialize');
             // Initialize models
-            console.log('%cWidgetView initialized!', 'color: darkblue; font-size:18px; background-color: #ddd; padding: 3px 5px;');
             this.settings = app.model.settings;
             
             // Create sub views
