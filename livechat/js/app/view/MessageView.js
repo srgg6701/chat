@@ -11,7 +11,7 @@
     var MessageView = app.MessageView = Backbone.View.extend({
         
         initialize : function()
-        {
+        {   trc('MessageView.initialize');
             // Initialize models
             
             this.settings = app.model.settings;
@@ -31,7 +31,7 @@
         },
         
         render : function()
-        {
+        {   trc('MessageView.render');
             // Clear the view
             
             this.$el.html($(app.template.message));
@@ -70,7 +70,7 @@
         },
         
         prepareMessage : function(body)
-        {
+        {   trc('MessageView.prepareMessage', [true, body]);
             // Create link elements
             
             body = body.replace(URL_EXP, function(full, protocol)
@@ -98,7 +98,7 @@
         },
         
         updateTime : function(reschedule)
-        {
+        {   trc('MessageView.updateTime', [true, reschedule]);
             // Update the time field
             
             var seconds = this.model.getAge();
@@ -164,7 +164,7 @@
         },
         
         clean : function()
-        {
+        {   trc('MessageView.clean');
             // Stop update timer
             
             if(this.timerId) clearTimeout(this.timerId);

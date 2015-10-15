@@ -14,7 +14,7 @@
         },
         
         render : function()
-        {
+        {   trc('SelectAvatarView.render');
             // Clear the view
             
             this.$el.html(app.template.selectAvatarContent);
@@ -42,7 +42,7 @@
         },
         
         selectAvatar : function(e)
-        {
+        {   trc('SelectAvatarView.selectAvatar');
             var $avatar = $(e.currentTarget);
             var image   = $avatar.data('image');
             

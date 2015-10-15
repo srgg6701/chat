@@ -2780,11 +2780,11 @@ function trc(function_name, params, color) {
 
 		function postMessage(data) {
 			trc('contentLoaded.postMessage', [true, data], 'blue');
-			console.log({
+			/*console.log({
 				'1. domain': document.domain,
 				'2. iframe': iframe,
 				'3. iframe.contentWindow': iframe.contentWindow
-			});
+			});*/
 			iframe.contentWindow.postMessage(data, '*');
 		}
 	});

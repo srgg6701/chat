@@ -52,6 +52,7 @@
         
         initialize : function()
         {
+            trc('WidgetView.initialize');
             // Initialize models
             console.log('%cWidgetView initialized!', 'color: darkblue; font-size:18px; background-color: #ddd; padding: 3px 5px;');
             this.settings = app.model.settings;
@@ -168,7 +169,7 @@
         },
         
         setState : function(state)
-        {
+        {   trc('WidgetView.setState', [true, state]);
             // Return if it's the current state
             
             if(this.state == state)
@@ -240,7 +241,7 @@
         },
         
         toggle : function()
-        {
+        {   trc('WidgetView.toggle');
             var bottom;
             
             if(this.visible) // Hide
@@ -285,13 +286,13 @@
         },
         
         toggleFullscreen : function()
-        {
+        {   trc('WidgetView.toggleFullscreen');
             if(this.fullscreen) this.fullscreenOff();
             else                this.fullscreenOn();
         },
         
         fullscreenOn : function()
-        {
+        {   trc('WidgetView.fullscreenOn');
             this.storeProperties();
             
             this.$html.addClass('fs');
@@ -301,7 +302,7 @@
         },
         
         fullscreenOff : function()
-        {
+        {   trc('WidgetView.fullscreenOff');
             this.$html.removeClass('fs');
             this.postMessage('animate|width=' + this.frameWidth + 'px,height=' + this.frameHeight + 'px,right=' + this.frameOffset, 'px');
             
@@ -309,7 +310,7 @@
         },
         
         close : function()
-        {
+        {   trc('WidgetView.close');
             if(history.length > 1) history.back();
             else
             {
@@ -319,7 +320,7 @@
         },
         
         autoLogin : function()
-        {
+        {   trc('WidgetView.autoLogin');
             // Show loading screen
             
             this.showLoading();
@@ -330,7 +331,7 @@
         },
         
         login : function()
-        {
+        {   trc('WidgetView.login');
             this.manualLogin = true;
             
             // Get the input
@@ -359,7 +360,7 @@
         },
         
         loginOnEnter : function(e)
-        {
+        {   trc('WidgetView.loginOnEnter', [true, e]);
             if(e.which === 13) // ENTER
             {
                 this.login();
@@ -367,7 +368,7 @@
         },
         
         toggleSettings : function()
-        {
+        {   trc('WidgetView.toggleSettings');
             // Disable if hidden
             
             if(!this.visible)
@@ -393,13 +394,13 @@
         },
         
         toggleEmoticons : function()
-        {
+        {   trc('WidgetView.toggleEmoticons');
             if(this.emotsVisible) this.hideEmoticons();
             else                  this.showEmoticons();
         },
         
         showEmoticons : function()
-        {
+        {   trc('WidgetView.showEmoticons');
             // Hide settings menu
             
             this.$settings.fadeOut('fast');
@@ -417,7 +418,7 @@
         },
         
         hideEmoticons : function()
-        {
+        {   trc('WidgetView.hideEmoticons');
             this.emotsVisible = false;
             
             $('html, body').unbind('.hideemots');
@@ -426,7 +427,7 @@
         },
         
         toggleSetting : function(evt)
-        {
+        {   trc('WidgetView.toggleSetting', [true, evt]);
             var $option = $(evt.currentTarget);
             
             // Get setting's name
@@ -439,7 +440,7 @@
         },
         
         endChat : function()
-        {
+        {   trc('WidgetView.endChat');
             // Show confirmation
             
             this.$endChat.hide();
@@ -447,7 +448,7 @@
         },
         
         endChatCancel: function()
-        {
+        {   trc('WidgetView.endChatCancel');
             // Hide confirmation
             
             this.$endChatConfirmation.hide();
@@ -455,7 +456,7 @@
         },
         
         endChatConfirm : function()
-        {
+        {   trc('WidgetView.endChatConfirm');
             // Hide confirmation
             
             this.$endChatConfirmation.hide();
@@ -478,7 +479,7 @@
         },
         
         renderSettings : function()
-        {
+        {   trc('WidgetView.renderSettings');
             // Update view according to the model
             
             this.settings.get('sound')  ? this.$toggleSound .removeClass('customer-chat-disabled') : this.$toggleSound .addClass('customer-chat-disabled');
@@ -488,7 +489,7 @@
         },
         
         addEmoticon : function(evt)
-        {
+        {   trc('WidgetView.addEmoticon', [true, evt]);
             var $emot = $(evt.currentTarget);
             
             this.$input.val(this.$input.val() + ' ' + $emot.data('emot') + ' ');
@@ -503,7 +504,7 @@
         },
         
         handleMessages : function(messages)
-        {
+        {   trc('WidgetView.handleMessages', [true, messages]);
             // Add messages to the chat
             
             for(var i = 0; i < messages.length; i++)
@@ -546,7 +547,7 @@
         },
         
         handleLastMessages : function(messages)
-        {
+        {   trc('WidgetView.handleLastMessages', [true, messages]);
             // Add last messages to the chat
             
             for(var i = 0; i < messages.length; i++)
@@ -560,7 +561,7 @@
         },
         
         messageTyping : function(evt)
-        {
+        {   trc('WidgetView.messageTyping', [true, evt]);
             // Handle typing status
             
             this.handleTyping();
@@ -576,7 +577,7 @@
         },
         
         sendMessage : function()
-        {
+        {   trc('WidgetView.sendMessage');
             var body = $.trim(this.$input.val());
             
             // Do nothing if there's no input
@@ -613,12 +614,12 @@
         },
         
         handleTyping : function()
-        {
+        {   trc('WidgetView.handleTyping');
             this.model.updateTypingStatus();
         },
         
         handleOperatorTyping : function()
-        {
+        {   trc('WidgetView.handleOperatorTyping');
             this.startTypingInfoBlink();
             
             // Hide automatically later
@@ -629,7 +630,7 @@
         },
         
         sendContactMessage : function()
-        {
+        {   trc('WidgetView.sendContactMessage');
             // Get the input
             
             var input = {
@@ -670,14 +671,14 @@
         },
         
         startTitleBlink : function()
-        {
+        {   trc('WidgetView.startTitleBlink');
             this.titleBlinking = true;
             
             this.blinkTitle();
         },
         
         blinkTitle : function()
-        {
+        {   trc('WidgetView.blinkTitle');
             if(!this.titleBlinking)
             {
                 return;
@@ -697,12 +698,12 @@
         },
         
         stopTitleBlink : function()
-        {
+        {   trc('WidgetView.stopTitleBlink');
             this.titleBlinking = false;
         },
         
         startTypingInfoBlink : function()
-        {
+        {   trc('WidgetView.startTypingInfoBlink');
             if(!this.typingInfoBlinking)
             {
                 this.typingInfoBlinking = true;
@@ -711,7 +712,7 @@
         },
         
         blinkTypingInfo : function()
-        {
+        {   trc('WidgetView.blinkTypingInfo');
             if(!this.typingInfoBlinking)
             {
                 return;
@@ -729,12 +730,12 @@
         },
         
         stopTypingInfoBlink : function()
-        {
+        {   trc('WidgetView.stopTypingInfoBlink');
             this.typingInfoBlinking = false;
         },
         
         showLogin : function()
-        {
+        {   trc('WidgetView.showLogin');
             this.setState('login');
             
             // Handle welcome message (only after initial login)
@@ -743,19 +744,19 @@
         },
         
         showLoginError : function()
-        {
+        {   trc('WidgetView.showLoginError');
             this.showInfo(config.ui.loginError);
         },
         
         onLogout : function()
-        {
+        {   trc('WidgetView.onLogout');
             // Wait for success response
             
             this.showLoading();
         },
         
         onLogoutSuccess : function()
-        {
+        {   trc('WidgetView.onLogoutSuccess');
             // Initialize the chat again
             
             this.showLogin();
@@ -763,7 +764,7 @@
         },
         
         onLogoutError : function()
-        {
+        {   trc('WidgetView.onLogoutError');
             // Initialize the chat again
             
             this.showLogin();
@@ -771,7 +772,7 @@
         },
         
         showWelcomeMessage : function()
-        {
+        {   trc('WidgetView.showWelcomeMessage');
             // Create the message
             
             var message = new app.MessageModel({
@@ -788,7 +789,7 @@
         },
         
         showChat : function()
-        {
+        {   trc('WidgetView.showChat');
             this.setState('chat');
             
             // For mobile devices, refresh the page
@@ -797,17 +798,17 @@
         },
         
         showContact : function()
-        {
+        {   trc('WidgetView.showContact');
             this.setState('contact');
         },
         
         showLoading : function()
-        {
+        {   trc('WidgetView.showLoading');
             this.setState('loading');
         },
         
         showInfo : function(text, title)
-        {
+        {   trc('WidgetView.showInfo', [true, text, title]);
             this.$info.html(text);
             this.$title.html(title);
             
@@ -815,12 +816,12 @@
         },
         
         showPrevState : function()
-        {
+        {   trc('WidgetView.showPrevState');
             this.setState(this.prevState);
         },
         
         storeProperties : function()
-        {
+        {   trc('WidgetView.storeProperties');
             if(!this.fullscreen)
             {
                 this.headerHeight = this.$header.height();
@@ -840,7 +841,7 @@
         },
         
         postMessage : function(data, callback)
-        {
+        {   trc('WidgetView.postMessage', [true, data, callback]);
             window.parent.postMessage(data, '*');
             
             if(callback)
@@ -860,7 +861,7 @@
         },
         
         initFramesCommunication : function()
-        {
+        {   trc('WidgetView.initFramesCommunication');
             var _this = this;
             
             this.$window.bind('message', function(evt)
