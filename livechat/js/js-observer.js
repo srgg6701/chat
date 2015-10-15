@@ -30,7 +30,7 @@ function trace_all(function_name, params, color){
 			if(function_name.indexOf('GuestSettingsModel.')!=-1)
 				color='darkorange';
 			if(function_name.indexOf('MessageModel.')!=-1)
-				color='blue';
+				color='#eeeeff';
 			if(function_name.indexOf('UISettingsModel.')!=-1)
 				color='black';
 			if(function_name.indexOf('UserModel.')!=-1)
@@ -42,7 +42,7 @@ function trace_all(function_name, params, color){
 			if(function_name.indexOf('LoginFormView.')!=-1)
 				color='#7FFFD4';
 			if(function_name.indexOf('MessageView.')!=-1)
-				color='#191970';
+				color='#ddeeff';
 			if(function_name.indexOf('SelectAvatarInlineView.')!=-1)
 				color='#E6E6FA';
 			if(function_name.indexOf('SelectAvatarView.')!=-1)

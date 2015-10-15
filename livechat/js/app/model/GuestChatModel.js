@@ -143,17 +143,20 @@
             // Check if there's any operator on-line
             
             var _this = this;
-            
+            //console.log('get file: '+config.isOperatorOnlinePath);
+            //[domain]/chat/livechat/php/app.php?operator-is-online
             $.get(config.isOperatorOnlinePath, function(data)
             {
                 if(data.success)
                 {
+                    console.log('operators:%conline', 'color:blue');
                     // Notify about online operator(s)
                     
                     _this.trigger('operators:online');
                 }
                 else
                 {
+                    console.log('operators:%coffline', 'color:#999');
                     // Notify about no operator(s)
                     
                     _this.trigger('operators:offline');

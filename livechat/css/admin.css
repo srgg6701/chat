@@ -34,7 +34,7 @@
 html
 {
     overflow: auto;
-    min-width: 980px;
+    /*min-width: 980px;*/
 }
 
 .customer-chat-widget
@@ -46,7 +46,7 @@ html
 {
     position: static;
     
-    min-width: 980px;
+    /*min-width: 980px;*/
     min-height: 640px;
     width: 100%;
     height: 100%;
@@ -74,7 +74,7 @@ html
 .customer-chat-content
 {
     position: absolute;
-    min-width: 980px;
+    /*min-width: 980px;*/
     min-height: 640px;
     width: 100%;
     height: auto;
@@ -88,7 +88,7 @@ html
 
 .customer-chat-header
 {
-    min-width: 980px;
+    /*min-width: 980px;*/
 }
 
 .customer-chat-header-menu
